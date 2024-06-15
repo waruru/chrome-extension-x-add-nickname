@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ニックネーム設定</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center" style="width: 300px; height: 100vh;">
+  <div class="bg-white flex flex-col justify-between h-full">
+    <div class="p-8">
+      <h1 class="text-xl font-bold mb-4">X(旧Twitter)ニックネーム設定</h1>
+      <input type="text" id="twitter-username" placeholder="@twitter" class="w-full p-2 border border-gray-300 rounded mb-4">
+      <input type="text" id="nickname" placeholder="ニックネーム" class="w-full p-2 border border-gray-300 rounded mb-4">
+      <button id="save" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">保存</button>
+      <button id="reset" class="w-full bg-gray-300 text-black p-2 rounded hover:bg-gray-400 mt-2">リセット</button>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+
+</html>
+
