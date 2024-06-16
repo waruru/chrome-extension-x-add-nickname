@@ -1,13 +1,13 @@
 chrome.storage.sync.get(null, function (nicknames) {
-  setTimeout(function() {
+  setTimeout(function () {
     const profilenameElement = document.querySelector('[data-testid="UserName"] > div > div > div > div > div > span > span');
     const profileidElement = document.querySelector('[data-testid="UserName"] > div > div > div > div > div > div > span');
     if (profileidElement && profilenameElement) {
       const profileid = profileidElement.textContent;
       const profilename = profilenameElement.textContent;
 
-      if (nicknames[profileid] && nicknames[profileid] !== profilename) {
-        profilenameElement.textContent = nicknames[profileid]+ ' (' + profilename + ')';
+      if (nicknames[profileid] && !profilename.includes(nicknames[profileid])) {
+        profilenameElement.textContent = nicknames[profileid] + ' (' + profilename + ')';
       }
     }
   }, 1500);
@@ -22,8 +22,8 @@ function processArticle(article) {
     if (useridElement && usernameElement) {
       const userid = useridElement.textContent;
       const username = usernameElement.textContent;
-      if (nicknames[userid] && nicknames[userid] !== username) {
-        usernameElement.textContent = nicknames[userid]+ ' (' + username + ')';
+      if (nicknames[userid] && !username.includes(nicknames[userid])) {
+        usernameElement.textContent = nicknames[userid] + ' (' + username + ')';
       }
     }
   })
@@ -36,8 +36,8 @@ function processOption(option) {
     if (useridElement && usernameElement) {
       const userid = useridElement.textContent;
       const username = usernameElement.textContent;
-      if (nicknames[userid] && nicknames[userid] !== username) {
-        usernameElement.textContent = nicknames[userid]+ ' (' + username + ')';
+      if (nicknames[userid] && !username.includes(nicknames[userid])) {
+        usernameElement.textContent = nicknames[userid] + ' (' + username + ')';
       }
     }
   })
@@ -52,8 +52,8 @@ function processFollow(follow) {
     if (useridElement && usernameElement) {
       const userid = useridElement.textContent;
       const username = usernameElement.textContent;
-      if (nicknames[userid] && nicknames[userid] !== username) {
-        usernameElement.textContent = nicknames[userid]+ ' (' + username + ')';
+      if (nicknames[userid] && !username.includes(nicknames[userid])) {
+        usernameElement.textContent = nicknames[userid] + ' (' + username + ')';
       }
     }
   })
@@ -75,8 +75,8 @@ function checkForDiv(node) {
 
 // DOM変更を監視する関数
 function observeDOMChanges() {
-  var observer = new MutationObserver(function(mutations) {
-    mutations.forEach(function(mutation) {
+  var observer = new MutationObserver(function (mutations) {
+    mutations.forEach(function (mutation) {
       if (mutation.addedNodes && mutation.addedNodes.length > 0) {
         mutation.addedNodes.forEach(checkForDiv);
       }
